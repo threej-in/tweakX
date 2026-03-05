@@ -1,26 +1,45 @@
 # tweakX (Chrome Extension)
 
-## Install
-1. Open `chrome://extensions`
-2. Turn on **Developer mode**
-3. Click **Load unpacked**
-4. Select this folder: `d:\node\twitter\extension`
+tweakX replaces X/Twitter home timeline cards with custom media-aware cards.
 
-## Use
-1. Open `https://x.com/home` (or refresh if already open)
-2. Wait for HomeTimeline network response
-3. The extension replaces native tweet card cells in-place with custom cards
-4. Click the extension icon and use:
-   - **Enable Extension** to turn replacement on/off
+## Requirements
+- Google Chrome (or any Chromium browser with extension developer mode)
+- Logged in to `https://x.com`
+
+## Install (Load Unpacked)
+1. Download or clone this repository.
+2. Open Chrome and go to `chrome://extensions`.
+3. Enable **Developer mode** (top-right).
+4. Click **Load unpacked**.
+5. Select the folder: `d:\node\twitter\extension`.
+6. Pin **tweakX** from the extensions menu (optional).
+
+## Install From Release ZIP
+1. Download `tweakX-v1.0.0.zip` from the repo release.
+2. Extract the ZIP to any folder (for example: `D:\tweakX`).
+3. Open `chrome://extensions`.
+4. Enable **Developer mode**.
+5. Click **Load unpacked**.
+6. Select the extracted extension folder.
+
+## How To Use
+1. Open `https://x.com/home`.
+2. Click the tweakX icon.
+3. Turn **Enable Extension** on.
+4. The page reloads automatically and cards are replaced.
+
+## Update To New Version
+1. Pull/download latest code.
+2. If needed, replace your extracted folder with the new one.
+3. Open `chrome://extensions`.
+4. Click **Reload** on tweakX.
+
+## Troubleshooting
+- If nothing changes on Home: make sure **Enable Extension** is ON in popup.
+- If changes do not appear: hard refresh X (`Ctrl+Shift+R`).
+- If requests/actions fail: reload the extension and log in to X again.
 
 ## Notes
-- The extension listens for HomeTimeline responses by patching `fetch` and `XMLHttpRequest` in page context.
-- `SHOW_TOMBSTONES` is set to `false` in `content.js`, so restricted/tombstone entries are skipped.
-- In-place replacement keeps Twitter's normal layout/sentinels so auto infinite-loading loops from `display:none` collapsing are avoided.
-- Cards now include:
-  - Hover profile panel (name, handle, bio, followers/following, join date)
-  - Feedback buttons derived from payload feedback keys (`Not interested`, etc.)
-- Settings are persisted in `chrome.storage.sync` (`extensionEnabled`)
-- If X changes DOM or endpoint naming, selectors/hook filters may need updates.
-
-
+- Works on `https://x.com/*` and `https://twitter.com/*`.
+- Settings are saved in `chrome.storage.sync`.
+- If X changes APIs/DOM, selectors or request hooks may need updates.
